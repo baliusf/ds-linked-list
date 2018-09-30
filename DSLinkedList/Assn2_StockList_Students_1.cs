@@ -228,27 +228,37 @@ namespace Assignment_2
     //return type  : NA
     public void SortByValue()
     {
-            StockNode temp, nextTemp;
+            // bubble sort
+            StockNode traverse, temp, last = null;
             int length = Length();
 
             for (int i = 0; i < length - 1; i++) {
-                temp = head;
-                for (int j = 0; j <= length - i && temp.Next != null; j++)
+                // set the node to head for every iteration
+                traverse = head;
+
+                // run till the last node, last node will shift by one after every iteration.(last, 2nd last, 3rd last...)
+                for (int j = 0; traverse.Next != last; j++)
                 {
-                    if (temp.StockHolding.Holdings < temp.Next.StockHolding.Holdings)
+                    // sort condition
+                    if (traverse.StockHolding.Holdings < traverse.Next.StockHolding.Holdings)
                     {
-                        nextTemp = temp.Next;
-                        temp = Swap(temp.StockHolding);
+                        temp = traverse.Next;
+                        traverse = Swap(traverse.StockHolding);
+
+                        // reset head if first node gets swapped
                         if (j == 0)
                         {
-                            head = nextTemp;
+                            head = temp;
                         }
                     }
                     else
                     {
-                        temp = temp.Next;
+                        traverse = traverse.Next;
                     }
                 }
+
+                // reset last node after completion of each iteration
+                last = traverse;
             }
         }
 
@@ -258,27 +268,30 @@ namespace Assignment_2
     //return type  : NA
     public void SortByName()
     {
-            StockNode temp, nextTemp;
+            // bubble sort (same logic as above)
+
+            StockNode traverse, temp, last = null;
             int length = Length();
 
             for (int i = 0; i < length - 1; i++)
             {
-                temp = head;
-                for (int j = 0; j <= length - i && temp.Next != null; j++)
+                traverse = head;
+                for (int j = 0; traverse.Next != last; j++)
                 {
-                    if (String.Compare(temp.StockHolding.Name, temp.Next.StockHolding.Name) > 0) {
-                        nextTemp = temp.Next;
-                        temp = Swap(temp.StockHolding);
+                    if (String.Compare(traverse.StockHolding.Name, traverse.Next.StockHolding.Name) > 0) {
+                        temp = traverse.Next;
+                        traverse = Swap(traverse.StockHolding);
                         if (j == 0)
                         {
-                            head = nextTemp;
+                            head = temp;
                         }
                     }
                     else
                     {
-                        temp = temp.Next;
+                        traverse = traverse.Next;
                     }
                 }
+                last = traverse;
             }
         }
   }
