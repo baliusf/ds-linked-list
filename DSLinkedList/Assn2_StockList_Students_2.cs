@@ -32,17 +32,22 @@ namespace Assignment_2
       return mostShareStock;
     }
 
-    //param        : NA
-    //summary      : finds the number of nodes present in the list
-    //return       : length of list
-    //return type  : int
-    public int Length()
-    {
-      int length = 0;
-
-      // write your implementation here
-
-      return length;
-    }
+        //param        : NA
+        //summary      : finds the number of nodes present in the list
+        //return       : length of list
+        //return type  : int
+        public int Length()
+        {
+            
+                int length = 0;
+                StockNode temp = this.head;
+                while (temp != null)
+                {
+                    length++;
+                    temp = temp.Next;
+                }
+                return length;
+       
+        }      
   }
 }
