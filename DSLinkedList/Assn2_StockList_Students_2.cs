@@ -12,12 +12,55 @@ namespace Assignment_2
     //return type  : StockList
     public StockList MergeList(StockList listToMerge)
     {
-      StockList resultList = new StockList();
-
-      // write your implementation here
-
-      return resultList;
-    }
+            StockList resultList = new StockList();
+            StockNode first = null;
+            StockNode current = null;
+            StockNode previous = null;
+            StockNode priNode = this.head;
+            StockNode secNode = listToMerge.head;
+            while (priNode != null)
+            {
+                if (secNode != null && priNode.StockHolding.Symbol.CompareTo(secNode.StockHolding.Symbol) == 0)
+                {
+                    decimal updateHoldings = priNode.StockHolding.Holdings + secNode.StockHolding.Holdings;
+                    priNode.StockHolding.Holdings = updateHoldings;
+                    current = priNode;
+                    if (first == null)
+                        first = current;
+                    if (previous != null)
+                        previous.Next = current;
+                    priNode = priNode.Next;
+                    secNode = secNode.Next;
+                }
+                else if (secNode != null && priNode.StockHolding.Symbol.CompareTo(secNode.StockHolding.Symbol) > 0)
+                {
+                    current = secNode;
+                    if (first == null)
+                        first = current;
+                    if (previous != null)
+                        previous.Next = current;
+                    secNode = secNode.Next;
+                }
+                else //if (secNode != null && priNode.StockHolding.Symbol.CompareTo(secNode.StockHolding.Symbol) < 0)
+                {
+                    current = priNode;
+                    if (first == null)
+                        first = current;
+                    if (previous != null)
+                        previous.Next = current;
+                    priNode = priNode.Next;
+                }
+                previous = current;
+            }
+            while (secNode != null)
+            {
+                current = secNode;
+                previous.Next = current;
+                secNode = secNode.Next;
+            }
+            resultList.head = first;
+            return resultList;
+        }
 
     //param        : NA
     //summary      : finds the stock with most number of holdings
@@ -26,8 +69,17 @@ namespace Assignment_2
     public Stock MostShares()
     {
       Stock mostShareStock = null;
-
-      // write your implementation here
+      StockNode active = this.head;
+            decimal highHoldings = 0;
+            while (active != null)
+            {
+                if (active.StockHolding.Holdings > highHoldings)
+                {
+                    highHoldings = active.StockHolding.Holdings;
+                    mostShareStock = active.StockHolding;
+                }
+                active = active.Next;
+            }
 
       return mostShareStock;
     }
@@ -36,18 +88,16 @@ namespace Assignment_2
         //summary      : finds the number of nodes present in the list
         //return       : length of list
         //return type  : int
-        public int Length()
+    public int Length()
+    {
+        int length = 0;
+        StockNode temp = this.head;
+        while (temp != null)
         {
-            
-                int length = 0;
-                StockNode temp = this.head;
-                while (temp != null)
-                {
-                    length++;
-                    temp = temp.Next;
-                }
-                return length;
-       
-        }      
+            length++;
+            temp = temp.Next;
+        }
+        return length;
+    }      
   }
 }
