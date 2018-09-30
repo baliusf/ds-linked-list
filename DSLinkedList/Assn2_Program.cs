@@ -52,11 +52,11 @@ namespace Assignment_2
             client2.StockList.Print();
             Console.WriteLine();
 
-            Console.WriteLine("Similarity Index for Client-1 and Clien-2 :" + client1.StockList.Similarity(client2.StockList));
+            Console.WriteLine("Similarity Index for Client-1 and Client-2 :" + client1.StockList.Similarity(client2.StockList));
 
-            Console.WriteLine("**************************Client-1,Client -2 Merged Portfolio*****************************************");
-            StockList mergedPortfolio = client1.StockList.MergeList(client2.StockList);
-            mergedPortfolio.Print();
+            //Console.WriteLine("**************************Client-1,Client -2 Merged Portfolio*****************************************");
+            //StockList mergedPortfolio = client1.StockList.MergeList(client2.StockList);
+            //mergedPortfolio.Print();
 
             Console.ReadLine();
         }
