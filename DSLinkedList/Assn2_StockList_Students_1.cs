@@ -228,9 +228,39 @@ namespace Assignment_2
     //return type  : NA
     public void SortByValue()
     {
-      // write your implementation here
+            // bubble sort
+            StockNode traverse, temp, last = null;
+            int length = Length();
 
-    }
+            for (int i = 0; i < length - 1; i++) {
+                // set the node to head for every iteration
+                traverse = head;
+
+                // run till the last node, last node will shift by one after every iteration.(last, 2nd last, 3rd last...)
+                for (int j = 0; traverse.Next != last; j++)
+                {
+                    // sort condition
+                    if (traverse.StockHolding.Holdings < traverse.Next.StockHolding.Holdings)
+                    {
+                        temp = traverse.Next;
+                        traverse = Swap(traverse.StockHolding);
+
+                        // reset head if first node gets swapped
+                        if (j == 0)
+                        {
+                            head = temp;
+                        }
+                    }
+                    else
+                    {
+                        traverse = traverse.Next;
+                    }
+                }
+
+                // reset last node after completion of each iteration
+                last = traverse;
+            }
+        }
 
     //param        : NA
     //summary      : Sort the list alphabatically
@@ -238,8 +268,31 @@ namespace Assignment_2
     //return type  : NA
     public void SortByName()
     {
-      // write your implementation here
+            // bubble sort (same logic as above)
 
-    }
+            StockNode traverse, temp, last = null;
+            int length = Length();
+
+            for (int i = 0; i < length - 1; i++)
+            {
+                traverse = head;
+                for (int j = 0; traverse.Next != last; j++)
+                {
+                    if (String.Compare(traverse.StockHolding.Name, traverse.Next.StockHolding.Name) > 0) {
+                        temp = traverse.Next;
+                        traverse = Swap(traverse.StockHolding);
+                        if (j == 0)
+                        {
+                            head = temp;
+                        }
+                    }
+                    else
+                    {
+                        traverse = traverse.Next;
+                    }
+                }
+                last = traverse;
+            }
+        }
   }
 }
