@@ -228,9 +228,29 @@ namespace Assignment_2
     //return type  : NA
     public void SortByValue()
     {
-      // write your implementation here
+            StockNode temp, nextTemp;
+            int length = Length();
 
-    }
+            for (int i = 0; i < length - 1; i++) {
+                temp = head;
+                for (int j = 0; j <= length - i && temp.Next != null; j++)
+                {
+                    if (temp.StockHolding.Holdings < temp.Next.StockHolding.Holdings)
+                    {
+                        nextTemp = temp.Next;
+                        temp = Swap(temp.StockHolding);
+                        if (j == 0)
+                        {
+                            head = nextTemp;
+                        }
+                    }
+                    else
+                    {
+                        temp = temp.Next;
+                    }
+                }
+            }
+        }
 
     //param        : NA
     //summary      : Sort the list alphabatically
@@ -238,8 +258,28 @@ namespace Assignment_2
     //return type  : NA
     public void SortByName()
     {
-      // write your implementation here
+            StockNode temp, nextTemp;
+            int length = Length();
 
-    }
+            for (int i = 0; i < length - 1; i++)
+            {
+                temp = head;
+                for (int j = 0; j <= length - i && temp.Next != null; j++)
+                {
+                    if (String.Compare(temp.StockHolding.Name, temp.Next.StockHolding.Name) > 0) {
+                        nextTemp = temp.Next;
+                        temp = Swap(temp.StockHolding);
+                        if (j == 0)
+                        {
+                            head = nextTemp;
+                        }
+                    }
+                    else
+                    {
+                        temp = temp.Next;
+                    }
+                }
+            }
+        }
   }
 }
