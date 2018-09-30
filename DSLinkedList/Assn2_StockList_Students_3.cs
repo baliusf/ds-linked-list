@@ -38,8 +38,13 @@ namespace Assignment_2
     //return type  : NA
     public void Print()
     {
-      // write your implementation here
+            StockNode temp = this.head;
+            while (temp != null)
+            {
+                Console.WriteLine(temp.StockHolding.ToString());
+                temp = temp.Next;
+            }
 
-    }
+        }
   }
 }
