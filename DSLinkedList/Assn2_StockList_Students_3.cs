@@ -13,9 +13,13 @@ namespace Assignment_2
     public decimal Value()
     {
       decimal value = 0.0m;
-
-      // write your implementation here
-
+      StockNode temp = this.head;
+      //Calculating the total value by multiplying number of holdings with cuttent value of share
+      while (temp != null)
+      {
+             value = value + temp.StockHolding.Holdings * temp.StockHolding.CurrentPrice;
+             temp = temp.Next;
+      }
       return value;
     }
 
@@ -26,9 +30,24 @@ namespace Assignment_2
     public int Similarity(StockList listToCompare)
     {
       int similarityIndex = 0;
-
-      // write your implementation here
-
+      //Initializing two variables temp and temp1 to head of client 1 and 2 portfolio respectively 
+      StockNode temp = head;
+      StockNode temp1 = listToCompare.head;
+      //Outer loop to traverse through client 1 portfoli0
+      while (temp != null)
+      {
+                temp1 = listToCompare.head;
+                //Inner loop to traverse through client 2 portfoli0
+                while (temp1 != null)
+                {
+                    if (temp.StockHolding.Symbol == temp1.StockHolding.Symbol) 
+                    {
+                        similarityIndex++;
+                    }
+                    temp1 = temp1.Next;
+                }
+                temp = temp.Next;         
+      }
       return similarityIndex;
     }
 
@@ -39,6 +58,7 @@ namespace Assignment_2
     public void Print()
     {
             StockNode temp = this.head;
+            //Displaying the client portfolios by calling ToString() method
             while (temp != null)
             {
                 Console.WriteLine(temp.StockHolding.ToString());
