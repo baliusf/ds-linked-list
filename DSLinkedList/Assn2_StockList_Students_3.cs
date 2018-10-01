@@ -43,6 +43,7 @@ namespace Assignment_2
                     if (temp.StockHolding.Symbol == temp1.StockHolding.Symbol) 
                     {
                         similarityIndex++;
+                        break;
                     }
                     temp1 = temp1.Next;
                 }
