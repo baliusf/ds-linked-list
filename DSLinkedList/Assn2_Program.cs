@@ -31,6 +31,9 @@ namespace Assignment_2
             client1.StockList.SortByValue();
             Console.WriteLine("Portfolio sorted in descending order by number of holdings for client 1:");
             client1.StockList.Print();
+            client1.StockList.SortByName();
+            Console.WriteLine("Portfolio sorted in alphabatical order for client 1:");
+            client1.StockList.Print();
 
 
             Console.WriteLine("**************************Client-2 Portfolio*****************************************");
@@ -57,7 +60,6 @@ namespace Assignment_2
             Console.WriteLine("**************************Client-1,Client -2 Merged Portfolio*****************************************");
             StockList mergedPortfolio = client1.StockList.MergeList(client2.StockList);
             mergedPortfolio.Print();
-
             Console.ReadLine();
         }
     }

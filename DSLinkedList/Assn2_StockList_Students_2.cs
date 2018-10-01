@@ -23,7 +23,7 @@ namespace Assignment_2
             // This while loop iterates until all the nodes in the primary list are encountered
             while (priNode != null)
             {
-                if (secNode != null && priNode.StockHolding.Symbol.CompareTo(secNode.StockHolding.Symbol) == 0)
+                if (secNode != null && priNode.StockHolding.Name.CompareTo(secNode.StockHolding.Name) == 0)
                 {
                     decimal updateHoldings = priNode.StockHolding.Holdings + secNode.StockHolding.Holdings;
                     priNode.StockHolding.Holdings = updateHoldings;
@@ -31,7 +31,7 @@ namespace Assignment_2
                     priNode = priNode.Next;
                     secNode = secNode.Next;
                 }
-                else if (secNode != null && priNode.StockHolding.Symbol.CompareTo(secNode.StockHolding.Symbol) > 0)
+                else if (secNode != null && priNode.StockHolding.Name.CompareTo(secNode.StockHolding.Name) > 0)
                 {
                     current = secNode;
                     secNode = secNode.Next;
