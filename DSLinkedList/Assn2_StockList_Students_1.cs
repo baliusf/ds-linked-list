@@ -278,6 +278,7 @@ namespace Assignment_2
                 traverse = head;
                 for (int j = 0; traverse.Next != last; j++)
                 {
+                    // Comparing strings instead
                     if (String.Compare(traverse.StockHolding.Name, traverse.Next.StockHolding.Name) > 0) {
                         temp = traverse.Next;
                         traverse = Swap(traverse.StockHolding);
